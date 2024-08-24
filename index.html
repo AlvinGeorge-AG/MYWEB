@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+          rel="stylesheet" />
 
     <title>Its Me Alvin!</title>
-<!--
-Reflux Template
--->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--
+    Reflux Template
+    -->
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -25,7 +22,7 @@ Reflux Template
     <link rel="stylesheet" href="assets/css/templatemo-style.css" />
     <link rel="stylesheet" href="assets/css/owl.css" />
     <link rel="stylesheet" href="assets/css/lightbox.css" />
-  </head>
+</head>
 
   <body>
     <div id="page-wraper">
@@ -343,7 +340,7 @@ Reflux Template
           <div class="row">
             <div class="right-content">
                 <div class="container">
-                    <form id="contact">
+                    <form class="column" id="submit-form" action="">
                         <div class="row">
                             <div class="col-md-6">
                                 <fieldset>
@@ -353,7 +350,7 @@ Reflux Template
                                            id="name"
                                            placeholder="Your name..."
                                            required="" />
-                                </fieldset>
+                                </fieldset><br>
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
@@ -363,7 +360,7 @@ Reflux Template
                                            id="email"
                                            placeholder="Your email..."
                                            required="" />
-                                </fieldset>
+                                </fieldset><br>
                             </div>
                             <div class="col-md-12">
                                 <fieldset>
@@ -373,7 +370,7 @@ Reflux Template
                                            id="subject"
                                            placeholder="Subject..."
                                            required="" />
-                                </fieldset>
+                                </fieldset><br>
                             </div>
                             <div class="col-md-12">
                                 <fieldset>
@@ -383,7 +380,7 @@ Reflux Template
                                               id="message"
                                               placeholder="Your message..."
                                               required=""></textarea>
-                                </fieldset>
+                                </fieldset><br>
                             </div>
                             <div class="col-md-12">
                                 <fieldset>
@@ -463,6 +460,24 @@ Reflux Template
         checkSection();
       });
     </script>
-   
+    <script>
+        $("#submit-form").submit((e) => {
+            e.preventDefault()
+            $.ajax({
+                url: "https://script.google.com/macros/s/AKfycbzM-CYxR1ep8VY6V4q_-0SougF1lmO5YlgC_xwltACu85AJ33PymDX1urGtdXAHj_txPA/exec",
+                data: $("#submit-form").serialize(),
+                method: "post",
+                success: function (response) {
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error: function (err) {
+                    alert("Something Error")
+
+                }
+            })
+        })
+    </script>
   </body>
 </html>
