@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" type="image/png" href="assets/images/my.png">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
+
+  <title>Its Me Alvin</title>
+
+  <!-- CSS Styles -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/templatemo-style.css" />
+  <link rel="stylesheet" href="assets/css/fontawesome.css" />
+  <link rel="stylesheet" href="assets/css/owl.css" />
+  <link rel="stylesheet" href="assets/css/lightbox.css" />
+
+  <style>
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animated-heading {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+    .animated-heading.fadeIn {
+      animation: slideInUp 0.5s ease-in-out;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #loading-overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.9);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 1s ease;
+    }
+
+    .spinner {
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #3498db;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .responsive-nav {
+      position: relative; /* Ensure it respects document flow */
+      z-index: 1; /* Lower than #loading-overlay */
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Overlay -->
+  <div id="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Page Wrapper -->
+  <div id="page-wraper">
+    <!-- Sidebar Menu -->
+    <div class="responsive-nav">
+      <i class="fa fa-bars" id="menu-toggle"></i>
+      <div id="menu" class="menu">
+        <i class="fa fa-times" id="menu-close"></i>
+        <div class="container">
+          <div class="image">
+            <a href="#"><img src="assets/images/oo.png" alt="" /></a>
+          </div>
+          <div class="author-content">
+            <h4>ALVIN GEORGE</h4>
+            <span>Tech Enthusiast</span>
+          </div>
+          <nav class="main-nav" role="navigation">
+            <ul class="main-menu">
+              <li><a href="#section1">About Me</a></li>
+              <li><a href="#section3">My Projects</a></li>
+              <li><a href="#section4">Contact Me</a></li>
+            </ul>
+          </nav>
+          <div class="social-network">
+            <ul class="soial-icons">
+              <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="mailto:someone@example.com" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+              <li><a href="https://www.linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="https://github.com" target="_blank"><i class="fa fa-github"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content (Placeholder for Sections) -->
+    <section id="section1" class="section about-me">
+      <h2>About Me</h2>
+      <!-- Add content here -->
+    </section>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const overlay = document.getElementById('loading-overlay');
+        overlay.style.opacity = '0'; // Smooth transition
+        setTimeout(() => {
+          overlay.style.display = 'none'; // Completely hide the overlay
+        }, 1000); // Adjust based on transition duration
+      }, 5000); // 5 seconds delay
+    });
+  </script>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/custom.js"></script>
+</body>
+</html>
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 65px;
+  aspect-ratio: 1;
+  position: relative;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  border-radius: 50px;
+  box-shadow: 0 0 0 3px inset #fff;
+  animation: l4 2.5s infinite;
+}
+.loader:after {
+  animation-delay: -1.25s;
+}
+@keyframes l4 {
+  0% {
+    inset: 0 35px 35px 0;
+  }
+  12.5% {
+    inset: 0 35px 0 0;
+  }
+  25% {
+    inset: 35px 35px 0 0;
+  }
+  37.5% {
+    inset: 35px 0 0 0;
+  }
+  50% {
+    inset: 35px 0 0 35px;
+  }
+  62.5% {
+    inset: 0 0 0 35px;
+  }
+  75% {
+    inset: 0 0 35px 35px;
+  }
+  87.5% {
+    inset: 0 0 35px 0;
+  }
+  100% {
+    inset: 0 35px 35px 0;
+  }
+}
+
+
+
+
+
+
+
+
+/* Loading Window CSS */
+.loader {
+  width: 65px;
+  aspect-ratio: 1;
+  position: relative;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  border-radius: 50px;
+  box-shadow: 0 0 0 3px inset #fff;
+  animation: l4 2.5s infinite;
+}
+.loader:after {
+  animation-delay: -1.25s;
+}
+@keyframes l4 {
+  0% {
+    inset: 0 35px 35px 0;
+  }
+  12.5% {
+    inset: 0 35px 0 0;
+  }
+  25% {
+    inset: 35px 35px 0 0;
+  }
+  37.5% {
+    inset: 35px 0 0 0;
+  }
+  50% {
+    inset: 35px 0 0 35px;
+  }
+  62.5% {
+    inset: 0 0 0 35px;
+  }
+  75% {
+    inset: 0 0 35px 35px;
+  }
+  87.5% {
+    inset: 0 0 35px 0;
+  }
+  100% {
+    inset: 0 35px 35px 0;
+  }
+}
+
+<div id="loading-overlay">
+  <div class="loader"></div>
+  <p class="loading-message">Loading, please wait...</p>
+</div>

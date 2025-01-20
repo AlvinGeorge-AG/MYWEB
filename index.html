@@ -2,6 +2,154 @@
 <html lang="en">
 <head>
 
+  <style>
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animated-heading {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+    .animated-heading.fadeIn {
+      animation: slideInUp 0.5s ease-in-out;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #loading-overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 1s ease;
+    }
+
+        /* Loading Window CSS */
+    .loader {
+      width: 65px;
+      aspect-ratio: 1;
+      position: relative;
+    }
+    .loader:before,
+    .loader:after {
+      content: "";
+      position: absolute;
+      border-radius: 50px;
+      box-shadow: 0 0 0 3px inset #ffffff;
+      animation: l4 2.5s infinite;
+    }
+    .loader:after {
+      animation-delay: -1.25s;
+    }
+    @keyframes l4 {
+      0% {
+        inset: 0 35px 35px 0;
+      }
+      12.5% {
+        inset: 0 35px 0 0;
+      }
+      25% {
+        inset: 35px 35px 0 0;
+      }
+      37.5% {
+        inset: 35px 0 0 0;
+      }
+      50% {
+        inset: 35px 0 0 35px;
+      }
+      62.5% {
+        inset: 0 0 0 35px;
+      }
+      75% {
+        inset: 0 0 35px 35px;
+      }
+      87.5% {
+        inset: 0 0 35px 0;
+      }
+      100% {
+        inset: 0 35px 35px 0;
+      }
+    }
+
+    .responsive-nav {
+      position: relative; /* Ensure it respects document flow */
+      z-index: 1; /* Lower than #loading-overlay */
+    }
+    .loading-message {
+      position: absolute;
+      bottom: 35%; /* Adjust to place it visually */
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffffff; /* Change color as needed */
+    }
+
+  </style>
+  <script>
+        window.addEventListener('load', function () {
+      const loadingMessage = document.querySelector('.loading-message');
+
+      // Change message after 2 seconds
+      setTimeout(() => {
+        loadingMessage.textContent = 'Almost done...';
+      }, 2000);
+
+      // Hide loading overlay after 5 seconds
+      setTimeout(function () {
+        const overlay = document.getElementById('loading-overlay');
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+        }, 1000); // Matches fade-out duration
+      }, 5000); // Total loading time
+    });
+  </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedHeadings = document.querySelectorAll('.animated-heading');
+  
+      function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+      }
+  
+      function onScroll() {
+        animatedHeadings.forEach(function(animatedHeading) {
+          if (isElementInViewport(animatedHeading)) {
+            animatedHeading.classList.add('fadeIn');
+          } else {
+            animatedHeading.classList.remove('fadeIn');
+          }
+        });
+      }
+  
+      window.addEventListener('scroll', onScroll);
+      onScroll(); // Trigger the function on load
+    });
+  </script>
+
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD8VZZR78Y"></script>
 <script>
@@ -53,6 +201,11 @@
 </head>
 
   <body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+      <div class="loader"></div>
+      <p class="loading-message">Loading, Hold On...</p>
+    </div>        
     <div id="page-wraper">
       <!-- Sidebar Menu -->
       <div class="responsive-nav">
@@ -105,9 +258,9 @@
         <div class="container">
           <div class="section-heading">
             <div><h5><span style="color: #add8e6;;" class="auto-type"> </span></h5></div>
-            <h3>About Me</h3>
+            <h3 class="animated-heading" >About Me</h3>
             <div class="line-dec"></div>
-            <span>Hi, I'm Alvin George, a passionate BTech Computer Science student at        <br> Government Model Engineering College, Thrikkakara.</span>
+            <p class="animated-heading">Hi, I'm Alvin George, a passionate BTech Computer Science student at        <br> Government Model Engineering College, Kochi.</p>
           </div>
           <div class="left-image-post">
             <div class="row">
@@ -119,8 +272,8 @@
               </div>
               <div class="col-md-6">
                 <div class="right-text">
-                    <h4>Code Crusader</h4>
-                  <p>
+                    <h4 class="animated-heading" >Code Crusader</h4>
+                  <p class="animated-heading">
                       With a strong foundation in programming fundamentals, I'm eager to dive deeper into the world of technology. I've already gained a solid grasp of basics in Python, HTML, and CSS, and I'm excited to expand my skill set further.
                   </p>
                 </div>
@@ -131,8 +284,8 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="left-text">
-                    <h4>My Thinking Dimension</h4>
-                  <p>
+                    <h4 class="animated-heading">My Thinking Dimension</h4>
+                  <p class="animated-heading">
                       I'm a dedicated learner, always on the lookout for opportunities to grow and improve. I believe in the power of hard work and perseverance, and I'm ready to put in the effort required to excel in the tech industry. When I find a company that aligns with my values and utilizes my skills, I'm willing to dedicate myself to contributing to its success.
                   </p>
                 </div>
@@ -147,12 +300,41 @@
           </div>
         </div>
       </section>
+
+      
+      <section class="section highlights"  data-section="section-highlights">
+        <div class="container">
+          <div class="section-heading">
+            <h2 class="animated-heading" >Highlights</h2>
+            <div class="line-dec"></div>
+            <span class="animated-heading">Current Highlights</span>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="highlight-image">
+                <img src="assets/images/IMG_20241222_060059.jpg" alt="Highlight Image" class="img-fluid" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="highlight-text">
+                <h4 class="animated-heading">A 24 hr Hackathon !</h4>
+                <p class="animated-heading">
+                  Throughout my journey, I have achieved several milestones that I am proud of. From mastering new programming languages to contributing to open-source projects, each step has been a learning experience. I am excited to continue this journey and achieve even more.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+
       <section class="section my-services" data-section="section2">
         <div class="container">
           <div class="section-heading">
-            <h2>What I’m good at?</h2>
+            <h2 class="animated-heading">What I’m good at?</h2>
             <div class="line-dec"></div>
-            <span>Beyond coding, I have a fascination with Artificial Intelligence and enjoy engaging in conversations with AI models.</span>
+            <p class="animated-heading">
+            Beyond coding, I have a fascination with Artificial Intelligence and enjoy engaging in conversations with AI models.</p>
           </div>
           <div class="row">
             <div class="col-md-6">
@@ -198,11 +380,9 @@
       <section class="section my-work" data-section="section3">
         <div class="container">
           <div class="section-heading">
-            <h2>My Projects</h2>
+            <h2 class="animated-heading">My Projects</h2>
             <div class="line-dec"></div>
-            <span
-              > I'm curious about the endless possibilities that AI presents and look forward to exploring this field further also I hope to complete more useful projects in future.</span
-            >
+            <p class="animated-heading"> I'm curious about the endless possibilities that AI presents and look forward to exploring this field further also I hope to complete more useful projects in future.</p>
           </div>
           <div class="row">
             <div class="isotope-wrapper">
@@ -302,13 +482,13 @@
       <section class="section contact-me" data-section="section4">
         <div class="container">
             <div class="section-heading">
-                <h2>Contact Me</h2>
+                <h2 class="animated-heading">Contact Me</h2>
 
                 <div class="line-dec"></div>
 
-                <span>
+                <p class="animated-heading">
                   Let's connect and see how we can collaborate to drive innovation and progress in the tech world!<br> Feel free to give corrections and advice , because that  make's  me Perfect & Optimized!
-                </span>
+                </p>
 
 
                 <div class="social-network">
@@ -488,6 +668,17 @@
         backSpeed: 40,
         loop:true
       })
+    </script>
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const overlay = document.getElementById('loading-overlay');
+          overlay.style.opacity = '0'; // Smooth transition
+          setTimeout(() => {
+            overlay.style.display = 'none'; // Completely hide the overlay
+          }, 1000); // Adjust based on transition duration
+        }, 3000); // 3 seconds delay
+      });
     </script>  
   </body>
 </html>
