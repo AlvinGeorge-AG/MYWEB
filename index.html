@@ -99,8 +99,30 @@
       font-weight: bold;
       color: #ffffff; /* Change color as needed */
     }
+    .no-scroll
+    {
+      overflow: hidden; /* Prevents scrolling on the main page */
+    }
+
 
   </style>
+  <script>
+        window.addEventListener('load', function () {
+      const overlay = document.getElementById('loading-overlay');
+
+      // Disable scrolling by adding the no-scroll class to the body
+      document.body.classList.add('no-scroll');
+
+      setTimeout(function () {
+        overlay.style.opacity = '0'; // Smooth transition
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          document.body.classList.remove('no-scroll'); // Enable scrolling after hiding the overlay
+        }, 1000); // Matches fade-out duration
+      }, 3000); // Total loading time
+    });
+
+  </script>
   <script>
         window.addEventListener('load', function () {
       const loadingMessage = document.querySelector('.loading-message');
