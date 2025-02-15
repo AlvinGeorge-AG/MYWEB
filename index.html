@@ -99,6 +99,9 @@
       font-weight: bold;
       color: #ffffff; /* Change color as needed */
     }
+    .hidden{
+      display: none;
+    }
     .no-scroll
     {
       overflow: hidden; /* Prevents scrolling on the main page */
@@ -767,16 +770,5 @@
         loop:true
       })
     </script>
-    <script>
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          const overlay = document.getElementById('loading-overlay');
-          overlay.style.opacity = '0'; // Smooth transition
-          setTimeout(() => {
-            overlay.style.display = 'none'; // Completely hide the overlay
-          }, 1000); // Adjust based on transition duration
-        }, 3000); // 3 seconds delay
-      });
-    </script>  
   </body>
 </html>
