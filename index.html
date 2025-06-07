@@ -129,22 +129,23 @@
   </script>
   <script>
         window.addEventListener('load', function () {
-      const loadingMessage = document.querySelector('.loading-message');
+        const loadingMessage = document.querySelector('.loading-message');
 
-      // Change message after 2 seconds
-      setTimeout(() => {
-        loadingMessage.textContent = 'Almost done...';
-      }, 2000);
-
-      // Hide loading overlay after 5 seconds
-      setTimeout(function () {
-        const overlay = document.getElementById('loading-overlay');
-        overlay.style.opacity = '0';
+        // Change message after 2 seconds
         setTimeout(() => {
-          overlay.style.display = 'none';
-        }, 1000); // Matches fade-out duration
-      }, 5000); // Total loading time
-    });
+          loadingMessage.textContent = 'Almost done...';
+        }, 2000);
+
+        // Hide loading overlay after 5 seconds
+        setTimeout(()=> {
+          const overlay = document.getElementById('loading-overlay');
+          overlay.style.opacity = '0';
+          setTimeout(() => {
+            overlay.style.display = 'none';
+            overlay.style.opacity = '0';
+          }, 1000); // Matches fade-out duration
+        }, 3000); // Total loading time
+      });
   </script>
   
   <script>
@@ -635,7 +636,6 @@
                             </div>
                         </div>
                     </form>
-                    
                 </div><br><br>
                 <div align="center">&#169; Alvin George lnc. All Rights Reserved.<br>Devoloped By Alvin George.</div>
             </div>
